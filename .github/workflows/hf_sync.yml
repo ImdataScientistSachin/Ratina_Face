@@ -4,21 +4,29 @@ on:
     branches: [main]
   workflow_dispatch:
 
-env:
-  FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
-
 jobs:
   sync-to-hub:
     runs-on: ubuntu-latest
+    env:
+      FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
     steps:
       - uses: actions/checkout@v4
         with:
           fetch-depth: 0
-          lfs: true
-      - name: Push to hub
-        uses: nateraw/huggingface-sync-action@v0.0.5
-        with:
-          github_repo_id: ImdataScientistSachin/Ratina_Face
-          huggingface_repo_id: ImdataScientistSachin/Ratina_Face
-          repo_type: space
-          hf_token: ${{ secrets.HF_TOKEN }}
+
+      - name: Clean project for Hugging Face
+        run: |
+          # Remove examples directory to avoid binary file rejection and keep Space lean
+          rm -rf examples/
+          # Configure Git credentials
+          git config --global user.email "actions@github.com"
+          git config --global user.name "GitHub Actions"
+          # Commit the removal for the temporary push
+          git add .
+          git commit -m "chore: clean project for deployment"
+
+      - name: Push to Hub
+        env:
+          HF_TOKEN: ${{ secrets.HF_TOKEN }}
+        run: |
+          git push --force https://ImdataScientistSachin:$HF_TOKEN@huggingface.co/spaces/ImdataScientistSachin/Ratina_Face main
