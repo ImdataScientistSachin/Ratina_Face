@@ -12,23 +12,25 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      - name: Push orphan branch to Hugging Face (no history, no binaries)
+      - name: Deploy clean snapshot to Hugging Face
         env:
           HF_TOKEN: ${{ secrets.HF_TOKEN }}
         run: |
           # Configure Git
           git config --global user.email "actions@github.com"
           git config --global user.name "GitHub Actions"
-          
-          # Copy only the code files we want to deploy (no examples/)
+          git config --global init.defaultBranch main
+
+          # Copy only code files (no examples/ to avoid binary rejection)
           mkdir /tmp/hf_deploy
           cp -r app.py main.py requirements.txt Dockerfile conftest.py src/ tests/ /tmp/hf_deploy/
-          
-          # Create a completely fresh git repo (no history, no binary commits)
+
+          # Create a completely fresh git repo with ZERO history
           cd /tmp/hf_deploy
           git init
+          git checkout -b main
           git add .
-          git commit -m "deploy: fresh deployment"
-          
-          # Force push this clean history to Hugging Face
+          git commit -m "deploy: RetinaFace Pro v1.0"
+
+          # Push clean snapshot to exact (lowercase) Space name
           git push --force https://ImdataScientistSachin:$HF_TOKEN@huggingface.co/spaces/ImdataScientistSachin/Ratina_face main
