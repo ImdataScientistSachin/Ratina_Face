@@ -14,21 +14,22 @@ jobs:
         with:
           fetch-depth: 0
 
-      - name: Clean project for Hugging Face
+      - name: Clean and Push to Hugging Face
+        env:
+          HF_TOKEN: ${{ secrets.HF_TOKEN }}
         run: |
-          # Remove examples directory to avoid binary file rejection and keep Space lean
+          # 1. Clean binaries to avoid rejection
           rm -rf examples/
-          # Configure Git credentials
+          
+          # 2. Configure Git
           git config --global user.email "actions@github.com"
           git config --global user.name "GitHub Actions"
-          # Commit the removal for the temporary push
+          
+          # 3. Create a temporary 'deploy' branch with no binaries
+          git checkout -b deploy
           git add .
-          git commit -m "chore: clean project for deployment"
-
-      - name: Push to Hub
-        uses: nateraw/huggingface-sync-action@v0.0.5
-        with:
-          github_repo_id: ImdataScientistSachin/Ratina_Face
-          huggingface_repo_id: ImdataScientistSachin/Ratina_face
-          repo_type: space
-          hf_token: ${{ secrets.HF_TOKEN }}
+          git commit -m "chore: clean deployment"
+          
+          # 4. Force push the clean branch to the Hugging Face main branch
+          # Using exact lowercase 'Ratina_face'
+          git push --force https://ImdataScientistSachin:$HF_TOKEN@huggingface.co/spaces/ImdataScientistSachin/Ratina_face deploy:main
