@@ -1,4 +1,4 @@
-# RetinaFace Pro — Face Detection, Landmark Localisation & Identity Verification
+# RetinaFace Pro — Face Detection, Landmark Localisation & Identity Verification.
 
 [![Python](https://img.shields.io/badge/Python-3776AB?style=flat&logo=python&logoColor=white)](https://www.python.org/)
 [![OpenCV](https://img.shields.io/badge/OpenCV-5C3EE8?style=flat&logo=opencv&logoColor=white)](https://opencv.org/)
