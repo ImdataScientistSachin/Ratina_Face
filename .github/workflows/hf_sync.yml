@@ -22,7 +22,7 @@ jobs:
           
           # Copy only the code files we want to deploy (no examples/)
           mkdir /tmp/hf_deploy
-          cp -r app.py main.py requirements.txt Dockerfile src/ tests/ .github/ /tmp/hf_deploy/
+          cp -r app.py main.py requirements.txt Dockerfile conftest.py src/ tests/ /tmp/hf_deploy/
           
           # Create a completely fresh git repo (no history, no binary commits)
           cd /tmp/hf_deploy
