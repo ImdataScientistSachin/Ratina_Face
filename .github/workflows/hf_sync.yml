@@ -2,7 +2,6 @@ name: Sync to Hugging Face hub
 on:
   push:
     branches: [main]
-  # to run this workflow manually from the Actions tab
   workflow_dispatch:
 
 jobs:
@@ -14,7 +13,9 @@ jobs:
           fetch-depth: 0
           lfs: true
       - name: Push to hub
-        env:
-          HF_TOKEN: ${{ secrets.HF_TOKEN }}
-        run: |
-          git push --force https://ImdataScientistSachin:$HF_TOKEN@huggingface.co/spaces/ImdataScientistSachin/Ratina_Face main
+        uses: huggingface/github-action@v1
+        with:
+          factory-user: ImdataScientistSachin
+          factory-space: Ratina_Face
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          huggingface-token: ${{ secrets.HF_TOKEN }}
