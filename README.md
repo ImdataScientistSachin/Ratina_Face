@@ -1,108 +1,138 @@
----
-title: RetinaFace Pro
-emoji: 🤖
-colorFrom: blue
-colorTo: indigo
-sdk: docker
-app_file: app.py
-pinned: false
----
+<div align="center">
 
-# RetinaFace Pro — Face Detection, Landmark Localisation & Identity Verification.
+# 🤖 RetinaFace Pro
 
-[![Python](https://img.shields.io/badge/Python-3776AB?style=flat&logo=python&logoColor=white)](https://www.python.org/)
+### Face Detection · Landmark Localisation · Identity Verification
+
+[![Live Demo](https://img.shields.io/badge/🤗_HuggingFace-Live_Demo-FFD21E?style=for-the-badge)](https://imdatascientistsachin-ratina-face.hf.space)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg?style=for-the-badge)](https://opensource.org/licenses/MIT)
+
+[![Python](https://img.shields.io/badge/Python_3.10+-3776AB?style=flat&logo=python&logoColor=white)](https://www.python.org/)
+[![TensorFlow](https://img.shields.io/badge/TensorFlow-FF6F00?style=flat&logo=tensorflow&logoColor=white)](https://www.tensorflow.org/)
 [![OpenCV](https://img.shields.io/badge/OpenCV-5C3EE8?style=flat&logo=opencv&logoColor=white)](https://opencv.org/)
-[![Streamlit](https://img.shields.io/badge/UI-Streamlit-FF4B4B?style=flat&logo=streamlit&logoColor=white)](https://streamlit.io/)
-[![TensorFlow](https://img.shields.io/badge/Backend-TensorFlow-FF6F00?style=flat&logo=tensorflow&logoColor=white)](https://www.tensorflow.org/)
-[![Docker](https://img.shields.io/badge/Deployment-Docker-2496ED?style=flat&logo=docker&logoColor=white)](https://www.docker.com/)
-[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
-[![HuggingFace](https://img.shields.io/badge/%F0%9F%A4%97_HuggingFace-Live_Demo-FFD21E?style=for-the-badge)](https://imdatascientistsachin-ratina-face.hf.space)  [![Python](https://img.shields.io/badge/Python-3776AB?style=flat-square&logo=python&logoColor=white)]  [![OpenCV](https://img.shields.io/badge/OpenCV-5C3EE8?style=flat-square&logo=opencv&logoColor=white)]  [![License: MIT](https://img.shields.io/badge/License-MIT-yellow?style=flat-square)]
+[![Streamlit](https://img.shields.io/badge/Streamlit-FF4B4B?style=flat&logo=streamlit&logoColor=white)](https://streamlit.io/)
+[![Docker](https://img.shields.io/badge/Docker-2496ED?style=flat&logo=docker&logoColor=white)](https://www.docker.com/)
 
-> Try the live app: https://imdatascientistsachin-ratina-face.hf.space
+> **Industry-grade computer vision** for dense face detection, precise 5-point landmark localisation, and one-to-many identity verification — production-ready and deployed live.
 
+[**🚀 Try Live Demo**](https://imdatascientistsachin-ratina-face.hf.space) · [**📦 HuggingFace Space**](https://huggingface.co/spaces/ImdataScientistSachin/Ratina_face) · [**👤 Author**](#-author)
+
+</div>
+
+---
 
 ## 📖 Overview
-**RetinaFace Pro** is an industry-grade computer vision pipeline designed for dense face detection, facial landmark localisation, and identity verification. This project refactors experimental research into a production-ready suite powered by the **RetinaFace** architecture and **DeepFace** (ArcFace).
-RetinaFace Pro is a deployed computer vision application for real-time face detection and precise 5-point facial landmark localisation using the state-of-the-art RetinaFace architecture. Hosted live on HuggingFace Spaces.
 
+**RetinaFace Pro** is a deployed, production-ready computer vision pipeline built on the state-of-the-art **RetinaFace** architecture. It refactors cutting-edge research into a fully usable suite that supports real-time multi-face detection, precise landmark extraction, and identity verification via **DeepFace (ArcFace)** embeddings.
 
-## Live Demo
-**App:** https://imdatascientistsachin-ratina-face.hf.space
-**HuggingFace Space:** https://huggingface.co/spaces/ImdataScientistSachin/Ratina_face
+The model simultaneously predicts:
 
+| Capability | Description |
+|---|---|
+| 🔲 **Face Detection** | Highly accurate bounding boxes across multiple faces |
+| 📍 **5-Point Landmarks** | High-precision localisation — eyes, nose, and mouth corners |
+| 🪪 **Identity Verification** | One-to-many matching with ArcFace embeddings |
+| 📊 **Confidence Scores** | Per-detection quality measurements |
 
-### The Model simultaneously predicts:
-- **Face Detection:** Highly accurate bounding boxes.
-- **5-Point Landmarks:** High-precision localisation for eyes, nose, and mouth corners.
-- **Identity Verification:** One-to-Many identity matching with ArcFace embeddings.
-- **Confidence Scores:** Reliable quality measurements for every detection.
+---
 
 ## 🌟 Key Features
-- **Multi-Face Analysis:** Detect and extract portraits from group shots in a single pass.
-- **1-to-Many Identity Check:** Compare a reference persona against multiple test images with detailed distance metrics.
-- **Dual Interface:** 
-    - **Modern Web Dashboard:** Interactive UI for real-time visualization and feedback.
-    - **Powerful CLI Tool:** High-throughput batch processing for folders and automated scripts.
-- **Production Standard:** Fully Dockerized and pre-configured for free deployment on **Hugging Face Spaces**.
+
+- **Multi-Face Analysis** — Detect and extract portraits from group shots in a single inference pass
+- **1-to-Many Identity Check** — Compare a reference persona against multiple test images with detailed distance metrics
+- **Dual Interface** — Choose between an interactive web dashboard or a powerful CLI for batch processing
+- **Production Standard** — Fully Dockerized and pre-configured for free deployment on Hugging Face Spaces
+
+---
 
 ## 🧬 Tech Stack
-- **Python 3.10+**
-- **RetinaFace** — SOTA detection backbone.
-- **DeepFace (ArcFace)** — identity verification model.
-- **Streamlit** — interactive web application framework.
-- **OpenCV & TensorFlow** — image processing and inference engine.
-- **Gradio / HuggingFace Spaces** — live deployment platform
+
+| Layer | Technology |
+|---|---|
+| **Detection** | RetinaFace (SOTA backbone) |
+| **Verification** | DeepFace · ArcFace |
+| **Backend** | Python 3.10+ · TensorFlow · OpenCV |
+| **Web UI** | Streamlit |
+| **Deployment** | Docker · HuggingFace Spaces |
+
+---
 
 ## 🏗️ Project Structure
+
 ```text
 Ratina_Face/
-├── src/                # Core logic (FaceDetector wrapper)
-├── examples/           # Sample images & testing data
-├── tests/              # Automated verification suite (pytest)
-├── .github/workflows/  # CI/CD pipelines (GitHub Actions)
-├── app.py              # Streamlit Web Application
-├── main.py             # Command-Line Tool
-├── Dockerfile          # Production container setup
-└── requirements.txt    # Managed dependencies
+├── src/                    # Core logic — FaceDetector wrapper
+├── examples/               # Sample images & test data
+├── tests/                  # Automated test suite (pytest)
+├── .github/workflows/      # CI/CD pipelines (GitHub Actions)
+├── app.py                  # Streamlit web application
+├── main.py                 # Command-line tool
+├── Dockerfile              # Production container setup
+└── requirements.txt        # Managed dependencies
 ```
+
+---
 
 ## 🚀 Quick Start
 
-### 1. Local Installation
+### 1 · Clone & Install
+
 ```bash
 git clone https://github.com/ImdataScientistSachin/Ratina-Face
 cd Ratina-Face
-
-# Install dependencies via the safe module syntax
 python -m pip install -r requirements.txt
 ```
 
-### 2. Launch Web Dashboard
 > [!TIP]
-> On Windows systems, always use the `python -m` prefix to avoid path-space errors.
+> On Windows, always use the `python -m` prefix to avoid path-space errors.
+
+### 2 · Launch Web Dashboard
+
 ```bash
 python -m streamlit run app.py
 ```
 
-### 3. Command Line Usage
+### 3 · Command-Line Usage
+
 ```bash
 # Detect and process a folder of images
-python main.py detect --input_dir examples/ --output_dir results
+python main.py detect --input_dir examples/ --output_dir results/
 
 # Verify identity match between two images
 python main.py verify examples/user1.jpg examples/user2.jpg
 ```
 
-## 🐳 Deployment & CI/CD
-Deploy to **Hugging Face Spaces** or any cloud provider using our optimized Docker setup:
+---
+
+## 🐳 Docker & Deployment
+
+Deploy to Hugging Face Spaces or any cloud provider using the optimised Docker setup:
+
 ```bash
 docker build -t retinaface-pro .
 docker run -p 7860:7860 retinaface-pro
 ```
-*Continuous integration is handled automatically via GitHub Actions (Linting & Pytest).*
 
-## � License
-MIT License — free to use, modify, and distribute.
+> Continuous integration is handled automatically via **GitHub Actions** — linting and pytest run on every push.
+
+---
+
+## 📄 License
+
+Distributed under the **MIT License** — free to use, modify, and distribute.
+See [`LICENSE`](./LICENSE) for details.
+
+---
 
 ## 👤 Author
-**Sachin Paunikar** — [LinkedIn](https://www.linkedin.com/in/sachin-paunikar-datascientists) | [GitHub](https://github.com/ImdataScientistSachin)
+
+**Sachin Paunikar**
+
+[![LinkedIn](https://img.shields.io/badge/LinkedIn-0A66C2?style=flat&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/sachin-paunikar-datascientists)
+[![GitHub](https://img.shields.io/badge/GitHub-181717?style=flat&logo=github&logoColor=white)](https://github.com/ImdataScientistSachin)
+
+---
+
+<div align="center">
+<sub>Built with ❤️ · Powered by RetinaFace & DeepFace · Deployed on HuggingFace Spaces</sub>
+</div>
