@@ -16,9 +16,20 @@ pinned: false
 [![TensorFlow](https://img.shields.io/badge/Backend-TensorFlow-FF6F00?style=flat&logo=tensorflow&logoColor=white)](https://www.tensorflow.org/)
 [![Docker](https://img.shields.io/badge/Deployment-Docker-2496ED?style=flat&logo=docker&logoColor=white)](https://www.docker.com/)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+[![HuggingFace](https://img.shields.io/badge/%F0%9F%A4%97_HuggingFace-Live_Demo-FFD21E?style=for-the-badge)](https://imdatascientistsachin-ratina-face.hf.space)  [![Python](https://img.shields.io/badge/Python-3776AB?style=flat-square&logo=python&logoColor=white)]  [![OpenCV](https://img.shields.io/badge/OpenCV-5C3EE8?style=flat-square&logo=opencv&logoColor=white)]  [![License: MIT](https://img.shields.io/badge/License-MIT-yellow?style=flat-square)]
+
+> Try the live app: https://imdatascientistsachin-ratina-face.hf.space
+
 
 ## 📖 Overview
 **RetinaFace Pro** is an industry-grade computer vision pipeline designed for dense face detection, facial landmark localisation, and identity verification. This project refactors experimental research into a production-ready suite powered by the **RetinaFace** architecture and **DeepFace** (ArcFace).
+RetinaFace Pro is a deployed computer vision application for real-time face detection and precise 5-point facial landmark localisation using the state-of-the-art RetinaFace architecture. Hosted live on HuggingFace Spaces.
+
+
+## Live Demo
+**App:** https://imdatascientistsachin-ratina-face.hf.space
+**HuggingFace Space:** https://huggingface.co/spaces/ImdataScientistSachin/Ratina_face
+
 
 ### The Model simultaneously predicts:
 - **Face Detection:** Highly accurate bounding boxes.
@@ -40,6 +51,7 @@ pinned: false
 - **DeepFace (ArcFace)** — identity verification model.
 - **Streamlit** — interactive web application framework.
 - **OpenCV & TensorFlow** — image processing and inference engine.
+- **Gradio / HuggingFace Spaces** — live deployment platform
 
 ## 🏗️ Project Structure
 ```text
