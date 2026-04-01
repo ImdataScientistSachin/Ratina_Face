@@ -7,3 +7,6 @@ matplotlib
 numpy<2.0.0
 Pillow
 tf-keras
+mlflow
+pytest
+pytest-cov

@@ -11,26 +11,39 @@ jobs:
       FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
     steps:
       - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
 
-      - name: Deploy clean snapshot to Hugging Face
+      - name: Install dependencies
+        run: python -m pip install huggingface_hub
+
+      - name: Upload to Hugging Face Space
         env:
           HF_TOKEN: ${{ secrets.HF_TOKEN }}
+        shell: python
         run: |
-          # Configure Git
-          git config --global user.email "actions@github.com"
-          git config --global user.name "GitHub Actions"
-          git config --global init.defaultBranch main
+          import os
+          from huggingface_hub import upload_folder
 
-          # Copy only code files (no examples/ to avoid binary rejection)
-          mkdir /tmp/hf_deploy
-          cp -r app.py main.py requirements.txt Dockerfile conftest.py src/ tests/ /tmp/hf_deploy/
+          token = os.environ.get('HF_TOKEN')
+          if not token:
+              raise ValueError('HF_TOKEN secret is missing or empty!')
 
-          # Create a completely fresh git repo with ZERO history
-          cd /tmp/hf_deploy
-          git init
-          git checkout -b main
-          git add .
-          git commit -m "deploy: RetinaFace Pro v1.0"
-
-          # Push clean snapshot to exact (lowercase) Space name
-          git push --force https://ImdataScientistSachin:$HF_TOKEN@huggingface.co/spaces/ImdataScientistSachin/Ratina_face main
+          print('Connecting to Hugging Face...')
+          upload_folder(
+              folder_path='.',
+              repo_id='ImdataScientistSachin/Ratina_face',
+              repo_type='space',
+              token=token,
+              ignore_patterns=[
+                  'examples/*',
+                  '__pycache__/*',
+                  '*.pyc',
+                  '.git/*',
+                  'upload_to_hf.py',
+                  '.github/*',
+                  'tests/*'
+              ],
+              commit_message='deploy: python-native sync from GitHub Actions'
+          )
+          print('✅ Upload Successful!')
